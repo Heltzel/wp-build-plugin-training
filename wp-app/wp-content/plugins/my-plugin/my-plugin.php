@@ -34,8 +34,6 @@ class MyPlugin
 		flush_rewrite_rules();
 	}
 
-	public function uninstall() {}
-
 	public function custom_post_type()
 	{
 		register_post_type('Book',  ['public' => true, 'label' => 'Books']);
