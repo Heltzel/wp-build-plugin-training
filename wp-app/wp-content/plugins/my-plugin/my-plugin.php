@@ -28,16 +28,7 @@ class MyPlugin
 		add_action('admin_enqueue_scripts', [$this, 'enqueue']);
 	}
 
-	public function activate()
-	{
-		$this->custom_post_type();
-		flush_rewrite_rules();
-	}
 
-	public function deactivate()
-	{
-		flush_rewrite_rules();
-	}
 
 	public function custom_post_type()
 	{
@@ -49,6 +40,12 @@ class MyPlugin
 		wp_enqueue_style('mypluginstyle', plugins_url('/assets/mypluginstyle.css', __FILE__));
 		wp_enqueue_script('mypluginstyle', plugins_url('/assets/mypluginscript.js', __FILE__));
 	}
+
+	public function activate()
+	{
+		require_once plugin_dir_path(__FILE__) . 'inc/MypluginActivate.php';
+		MypluginActivate::activate();
+	}
 }
 
 if (class_exists('MyPlugin')) {
@@ -56,5 +53,8 @@ if (class_exists('MyPlugin')) {
 	$myPlugin->register();
 }
 
+
 register_activation_hook(__FILE__, [$myPlugin, 'activate']);
-register_deactivation_hook(__FILE__, [$myPlugin, 'deactivate']);
+
+require_once plugin_dir_path(__FILE__) . 'inc/MypluginDeactivate.php';
+register_deactivation_hook(__FILE__, ['MypluginDeactivate', 'deactivate']);
