@@ -1,0 +1,1 @@
+<h1>My Plugin Admin Page</h1>

@@ -1,6 +1,6 @@
 <?php
 
-class MypluginActivate
+class MyPluginActivate
 {
 	public static function activate()
 	{

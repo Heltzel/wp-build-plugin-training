@@ -1,0 +1,2 @@
+[03-Nov-2025 21:09:09 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /var/www/html/wp-admin/admin-header.php on line 41
+[03-Nov-2025 21:11:05 UTC] PHP Deprecated:  strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated in /var/www/html/wp-admin/admin-header.php on line 41

@@ -1,6 +1,6 @@
 <?php
 
-class MypluginDeactivate
+class MyPluginDeactivate
 {
 	public static function deactivate()
 	{
