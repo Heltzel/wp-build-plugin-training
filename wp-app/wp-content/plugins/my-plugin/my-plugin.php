@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  @package: MyPlugin
  */
@@ -14,26 +15,36 @@
 
 defined('ABSPATH') or die('What are you doing you silly human');
 
-class MyPlugin{
+class MyPlugin
+{
+
+	public function  __construct()
+	{
+		add_action('init', [$this, 'custom_post_type']);
+	}
+
 	public function activate()
 	{
-		
+		$this->custom_post_type();
+		flush_rewrite_rules();
 	}
 
 	public function deactivate()
 	{
-		
+		flush_rewrite_rules();
 	}
 
-	public function uninstall()
+	public function uninstall() {}
+
+	public function custom_post_type()
 	{
-		
+		register_post_type('Book',  ['public' => true, 'label' => 'Books']);
 	}
 }
 
-if(class_exists('MyPlugin')){
+if (class_exists('MyPlugin')) {
 	$myPlugin = new MyPlugin();
 }
 
-register_activation_hook( __FILE__, [$myPlugin,'activate'] );
-register_deactivation_hook( __FILE__, [$myPlugin,'deactivate'] );
+register_activation_hook(__FILE__, [$myPlugin, 'activate']);
+register_deactivation_hook(__FILE__, [$myPlugin, 'deactivate']);
